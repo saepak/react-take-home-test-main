@@ -4,7 +4,7 @@ import { AppBar, Toolbar } from "@mui/material";
 // import app components
 import logo from "../icons/logo.svg";
 
-function Header() {
+const Header =()=> {
   return (
     <AppBar color="secondary">
       <Toolbar sx={{ maxWidth: "1280px", width: "100%", margin: "0 auto" }}>

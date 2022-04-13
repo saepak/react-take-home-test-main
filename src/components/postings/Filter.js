@@ -1,13 +1,8 @@
-import React, { useState } from "react";
-import { Box, Grid, Typography, MenuItem } from "@mui/material";
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import React from "react";
+import { Box } from "@mui/material";
 
 
-
-
-const Filter =({jobs})=> {
-
-    const [value, setValue] = useState('All');
+const Filter =({jobs, handleLocationValue, handleTeamValue, handleTypeValue})=> {
 
     const locationNames = [...new Set(jobs.map(job=> job.categories.location))];
     const TeamNames = [...new Set(jobs.map(job=> job.categories.team))];
@@ -26,37 +21,28 @@ const Filter =({jobs})=> {
       return (<option value={type}>{type}</option>)
     }
     
-    const handleChange = (e) => {
-      e.preventDefault();
-      // setValue(e.target.value);
-      console.log('new value:', e.target.value)
-    }
-    
+
     return (
       <Box sx={{ maxWidth: "1024px", width: "100%", margin: "0 auto", py: 5 }}>
-         <Grid container spacing={2}>
-          <Grid item>
-            <Typography>FILTER BY:</Typography>
-          </Grid>
-          <Grid item>
-            <select class="filter-locations" onChange={handleChange}>
-              <option disabled selected>ALL LOCATIONS</option>
-              {locationNames.map(location=>(<HandleLocationOptions key={location} location={location} />))}
-            </select>
-          </Grid>
-          <Grid item>
-            <select class="filter-teams" onChange={handleChange}>
-              <option disabled selected>ALL TEAMS</option>
-              {TeamNames.map(team=>(<HandleTeamOptions key={team} team={team} />))}
-            </select>
-          </Grid>
-          <Grid item>
-            <select class="filter-types" onChange={handleChange}>
-              <option disabled selected>ALL WORK TYPES</option>
-              {WorkTypeNames.map(type=>(<HandleWorkTypeOptions key={type} type={type} />))}
-            </select>
-          </Grid>
-         </Grid>
+         <div className="filter-wrapper">
+          <h5>FILTER BY:</h5>
+
+          <select defaultValue={"ALL LOCATIONS"} onChange={handleLocationValue}>
+            <option disabled value={"ALL LOCATIONS"}>ALL LOCATIONS</option>
+            {locationNames.map((location, index)=>(<HandleLocationOptions key={index} location={location} />))}
+          </select>
+
+          <select defaultValue={"ALL TEAMS"} onChange={handleTeamValue}>
+            <option disabled value={"ALL TEAMS"}>ALL TEAMS</option>
+            {TeamNames.map((team,index)=>(<HandleTeamOptions key={index} team={team} />))}
+          </select>
+
+          <select defaultValue={"ALL WORK TYPES"} onChange={handleTypeValue}>
+            <option disabled value={"ALL WORK TYPES"}>ALL WORK TYPES</option>
+            {WorkTypeNames.map((type,index)=>(<HandleWorkTypeOptions key={index} type={type} />))}
+          </select>
+
+         </div>
       </Box>
     );
   }

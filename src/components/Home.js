@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-function Home() {
+const Home =()=> {
   return (
     <Box sx={{ maxWidth: "1024px", width: "100%", margin: "0 auto", py: 5 }}>
       <Typography variant="h3" sx={{ textAlign: "center", mb: 2 }}>

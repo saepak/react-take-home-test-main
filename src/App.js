@@ -6,6 +6,7 @@ import { CssBaseline } from "@mui/material";
 // import app components
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Banner from "./components/Banner"
 import Jobs from './components/postings/Job';
 import theme from "./theme/mui";
 
@@ -16,8 +17,8 @@ function App() {
 
       <Header />
 
+      <Banner />
       <Home />
-
       <Jobs />
     </ThemeProvider>
   );

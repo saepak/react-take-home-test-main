@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { Box } from "@mui/material";
 
 
 const Filter =({jobs, options, selectedLocation, selectedTeam, selectedType, handleLocationValue, handleTeamValue, handleTypeValue})=> {
@@ -8,6 +7,7 @@ const Filter =({jobs, options, selectedLocation, selectedTeam, selectedType, han
     const locationNames = [...new Set(options?.map(option=> option.categories.location))];
     const TeamNames = [...new Set(options?.map(option=> option.categories.team))];
     const WorkTypeNames = [...new Set(options?.map(option=> option.categories.commitment))];
+
 
     // handle select value
     const HandleLocationOptions = ({location}) => {

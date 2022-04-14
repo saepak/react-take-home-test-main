@@ -53,9 +53,9 @@ const Job =()=> {
 
     // filter job postings
     const filter = jobs.filter((job) =>
-        (selectedLocation == "ALL" || job.categories.location === selectedLocation) &&
-        (selectedTeam == "ALL" || job.categories.team === selectedTeam) &&
-        (selectedType == "ALL" || job.categories.commitment == selectedType)
+        (selectedLocation === "ALL" || job.categories.location === selectedLocation) &&
+        (selectedTeam === "ALL" || job.categories.team === selectedTeam) &&
+        (selectedType === "ALL" || job.categories.commitment === selectedType)
     );
  
 

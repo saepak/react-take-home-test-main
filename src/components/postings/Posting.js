@@ -1,30 +1,32 @@
 import React from 'react';
-import { Box } from "@mui/material";
 
 
-function Posting({jobs}) {
+const Posting = ({jobs}) => {
+
   const TeamNames = [...new Set(jobs.map(job=> job.categories.team))];
-  console.log('TeamNames', TeamNames)
+
   return (
     <>
-    {TeamNames.map(team=>(
-      <div>
-        <h1>{team}</h1>
-      {jobs.map(job=>(
-        job.categories.team === team ?
-       (        
-        <a className="posting-wrapper" target="_" href={job.hostedUrl}>
-          <div className="posting-box">
-              <div>
-                <h2>{job.text}</h2>
-                <h6>{job.categories.location} / {team}</h6>
-              </div>
-              <button>Apply</button>
+    { TeamNames.map((team,index) => (
+        <div key={index} className="team-wrapper wrapper">
+          <h2>{team}</h2>
+          <div className="posting-cards-wrapper">
+            { jobs.map((job,index)=>(
+                job.categories.team === team ?
+                (        
+                  <a key={index} className="cards-wrapper" target="_" href={job.hostedUrl}>
+                    <div className="card-box">
+                        <div>
+                          <h3>{job.text}</h3>
+                          <h6>{job.categories.location} / {team}</h6>
+                        </div>
+                        <button>APPLY</button>
+                    </div>
+                  </a>) : null
+                ))
+              }
           </div>
-        </a>) : null
-      ))
-    }
-      </div>
+        </div>
       ))}
     </>
   );

@@ -67,7 +67,7 @@ button {
 /* source - https://cssreset.com/scripts/eric-meyer-reset-css/*/
 
 
-#root {
+html, #root {
 	background-color: #111a20!important;
 }
 

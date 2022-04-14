@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 
 
-const Filter =({jobs, options, selectedLocation, selectedTeam, selectedType, handleLocationValue, handleTeamValue, handleTypeValue})=> {
+const Filter =({options, selectedLocation, selectedTeam, selectedType, handleLocationValue, handleTeamValue, handleTypeValue})=> {
   
     // get unique option value for select
     const locationNames = [...new Set(options?.map(option=> option.categories.location))];
@@ -9,20 +9,6 @@ const Filter =({jobs, options, selectedLocation, selectedTeam, selectedType, han
     const WorkTypeNames = [...new Set(options?.map(option=> option.categories.commitment))];
 
 
-    // handle select value
-    const HandleLocationOptions = ({location}) => {
-      return (<option value={location}>{location}</option>)
-    }
-
-    const HandleTeamOptions = ({team}) => {
-      return (<option value={team}>{team}</option>)
-    }
-
-    const HandleWorkTypeOptions = ({type}) => {
-      return (<option value={type}>{type}</option>)
-    }
-
-    
     return (
          <div className="filter-wrapper wrapper">
 
@@ -31,21 +17,27 @@ const Filter =({jobs, options, selectedLocation, selectedTeam, selectedType, han
           <div className="select-wrapper">
             <select value={selectedLocation} onChange={handleLocationValue}>
               <option value={"ALL"}>ALL LOCATIONS</option>
-              {locationNames.map((location, index)=>(<HandleLocationOptions key={index} location={location} />))}
+              {locationNames.map((location, index)=>(
+                <option key={index} value={location}>{location}</option>
+              ))}
             </select>
           </div>
 
           <div className="select-wrapper">
             <select value={selectedTeam} onChange={handleTeamValue}>
               <option value={"ALL"}>ALL TEAMS</option>
-              {TeamNames.map((team,index)=>(<HandleTeamOptions key={index} team={team} />))}
+              {TeamNames.map((team, index)=>(
+                <option key={index} value={team}>{team}</option>
+              ))}
             </select>
           </div>
 
           <div className="select-wrapper">
             <select value={selectedType} onChange={handleTypeValue}>
               <option value={"ALL"}>ALL WORK TYPES</option>
-              {WorkTypeNames.map((type,index)=>(<HandleWorkTypeOptions key={index} type={type} />))}
+              {WorkTypeNames.map((type, index)=>(
+                <option key={index} value={type}>{type}</option>
+              ))}
             </select>
           </div>
 

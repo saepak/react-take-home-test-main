@@ -1,9 +1,9 @@
 import React from 'react';
 
 
-const Posting = ({jobs}) => {
+const Posting = ({filter}) => {
 
-  const TeamNames = [...new Set(jobs.map(job=> job.categories.team))];
+  const TeamNames = [...new Set(filter.map(job=> job.categories.team))];
 
   return (
     <>
@@ -11,7 +11,7 @@ const Posting = ({jobs}) => {
         <div key={index} className="team-wrapper wrapper">
           <h2>{team}</h2>
           <div className="posting-cards-wrapper">
-            { jobs.map((job,index)=>(
+            { filter.map((job,index)=>(
                 job.categories.team === team ?
                 (        
                   <a key={index} className="cards-wrapper" target="_" href={job.hostedUrl}>

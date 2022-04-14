@@ -30,7 +30,10 @@ const Job =()=> {
         setIsLoading(true)
         
         axios.get(`https://api.lever.co/v0/postings/paralleldomain?mode=json`)
-        .then(response => (setJobs(response.data), setOptions(response.data)) )
+        .then((response) => {
+          setJobs(response.data);
+          setOptions(response.data);
+        })
         .catch(error => {
             console.error('error', error);
         });
